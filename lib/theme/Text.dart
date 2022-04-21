@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shop/theme/Colors.dart';
 
 const textTheme = TextTheme(
 subtitle1: TextStyle(
-fontSize: 13,
+fontSize: 11,
 fontWeight: FontWeight.w300,
-color: Colors.black,
+color: offBlack,
 fontStyle: FontStyle.italic
 ),
 headline6: TextStyle(
-fontSize: 17,
+fontSize: 15,
 fontWeight: FontWeight.w500,
-color: Colors.black,
+color: blackish,
 )
 );

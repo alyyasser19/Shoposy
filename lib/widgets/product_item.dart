@@ -4,6 +4,7 @@ import 'package:flutter_shop/screens/product_details.dart';
 import 'package:flutter_shop/theme/Colors.dart';
 import 'package:provider/provider.dart';
 
+import '../providers/Cart.dart';
 import '../providers/Products.dart';
 
 class ProductItem extends StatelessWidget {
@@ -13,8 +14,10 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Products products =Provider.of<Products>(context);
+    final Cart cart= Provider.of<Cart>(context);
     final product = Provider.of<Product>(context);
     final String title= product.title;
+    final String id= product.id;
     final String imageUrl= product.imageUrl;
     final double price= product.price;
     final bool isFavorite= product.isFavorite;
@@ -32,7 +35,7 @@ class ProductItem extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
-                color: Colors.white,
+                color: offWhite,
               ),
               child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +64,10 @@ class ProductItem extends StatelessWidget {
       Positioned(
         right: 0,
         bottom: 0,
-        child: Image.asset('assets/images/add_to_cart.png',height: 45,width: 45,),
+        child: IconButton(icon: Image.asset('assets/images/add_to_cart.png'), iconSize: 46, padding: const EdgeInsets.all(0),splashColor: Colors.transparent , onPressed: (){
+          cart.addItem(id, price, title, imageUrl);
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Added item to cart'),duration: Duration(seconds: 2),elevation: 4));
+        },),
       ),
         // favorite button
         Positioned(

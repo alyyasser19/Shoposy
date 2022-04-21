@@ -14,7 +14,7 @@ class Products with ChangeNotifier{
       'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg',
     ),
    Product(
-     id: 'p4',
+     id: 'p2',
      title: 'Wireless Mouse M20',
      description: 'Prepare any meal you want.',
      price: 49.99,
@@ -23,7 +23,7 @@ class Products with ChangeNotifier{
      'https://resource.logitech.com/w_692,c_limit,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/en/products/mice/m720/gallery/m720-gallery-1a.png?v=1',
    ),
     Product(
-      id: 'p4',
+      id: 'p3',
       title: 'A Pan',
       description: 'Prepare any meal you want.',
       price: 49.99,
