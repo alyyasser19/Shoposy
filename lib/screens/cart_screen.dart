@@ -17,43 +17,6 @@ class CartScreen extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          if (cart.isCartEmpty)  Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Text('Your Cart Is Empty, Go Ahead and Buy Something!', style: Theme.of(context).textTheme.headline6),
-          ) else Padding(
-                padding: const EdgeInsets.only(left: 20.0,right: 20, top: 10),
-                child: Column(
-                  children: [
-                    const Divider(
-                      height: 5,
-                      color: blackish,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Row(
-                          children: [
-                            Text('Subtotal:', style: Theme.of(context).textTheme.headline6,),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text('${cart.totalAmount.toStringAsFixed(2)} EGP', style: Theme.of(context).textTheme.subtitle1?.copyWith(fontSize: 16),),
-                            ),
-                          ],
-                        ),
-                        TextButton(
-                          child: const Text('ORDER NOW', style: TextStyle(color: shopsyRd)),
-                          onPressed: (){},
-                        )
-                      ],
-                    ),
-                    const Divider(
-                      height: 5,
-                      color: blackish,
-                    ),
-                  ],
-                ),
-              )
-          ,
           const SizedBox(height: 10),
           Expanded(
             child: ListView.builder(
@@ -66,7 +29,46 @@ class CartScreen extends StatelessWidget {
                 productId: cart.items.values.toList()[i].id,
               ),
               ),
-            )
+            ),
+          if (cart.isCartEmpty)  Expanded(
+            child: Text('Your Cart Is Empty, Go Ahead and Buy Something!', style: Theme.of(context).textTheme.headline6),
+          ) else Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20.0,right: 20, top: 3, bottom: 5),
+              child: Column(
+                children: [
+                  const Divider(
+                    height: 5,
+                    color: blackish,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(
+                        children: [
+                          Text('Subtotal:', style: Theme.of(context).textTheme.headline6,),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text('${cart.totalAmount.toStringAsFixed(2)} EGP', style: Theme.of(context).textTheme.subtitle1?.copyWith(fontSize: 18),),
+                          ),
+                        ],
+                      ),
+                      TextButton(
+                        child: const Text('ORDER NOW', style: TextStyle(color: shopsyRd)),
+                        onPressed: (){},
+                      )
+                    ],
+                  ),
+                  const Divider(
+                    height: 5,
+                    color: blackish,
+                  ),
+                ],
+              ),
+            ),
+          )
+          ,
         ],
       ),
     );

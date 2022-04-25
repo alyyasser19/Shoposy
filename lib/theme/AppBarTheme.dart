@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_shop/theme/Colors.dart';
 
 const appBarTheme = AppBarTheme(
-backgroundColor: Color(0xFFFFFFFF),
+backgroundColor: offWhite,
 elevation: 0,
 centerTitle: true,
 iconTheme: IconThemeData(color: blackish),

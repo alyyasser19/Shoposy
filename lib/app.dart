@@ -6,6 +6,8 @@ import 'package:flutter_shop/screens/tabs.dart';
 import 'package:flutter_shop/theme/theme.dart';
 import 'package:provider/provider.dart';
 
+import 'screens/login.dart';
+
 class App extends StatefulWidget {
   const App({Key?key}) : super(key: key);
 
@@ -29,7 +31,7 @@ class _AppState extends State<App> {
         title: "Shop",
         theme: theme,
         themeMode: ThemeMode.light,
-        initialRoute: Tabs.routeName,
+        initialRoute: Login.routeName,
         routes: routes(context),
       ),
     );

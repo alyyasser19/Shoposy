@@ -24,7 +24,7 @@ class CartItemA extends StatelessWidget {
   Widget build(BuildContext context) {
     Cart cart = Provider.of<Cart>(context);
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(right: 10.0, left: 10.0, top: 5.0),
       child: Dismissible(
         key: ValueKey(productId),
         direction: DismissDirection.endToStart,
@@ -53,11 +53,11 @@ class CartItemA extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.22,
+                height: MediaQuery.of(context).size.height * 0.15,
                 width: MediaQuery.of(context).size.width * 0.4,
                 child: Image.network(
                   imageUrl,
-                  fit: BoxFit.fill,
+                  fit: BoxFit.contain,
                 ),
               ),
               Container(
@@ -68,21 +68,23 @@ class CartItemA extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 10.0),
+                      padding: const EdgeInsets.only(bottom: 5.0),
                       child: Text(
                         productName,
                         style: Theme.of(context).textTheme.headline6,
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom:10.0, top: 10.0),
+                      padding: const EdgeInsets.only(bottom:5.0, top: 5.0),
                       child: Text(
                         ' $price EGP',
-                        style: Theme.of(context).textTheme.subtitle1,
+                        style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                          fontSize: 15
+                        ),
                       ),
                     ),
                     Container(
-                      transform: Matrix4.translationValues(-15, 0, 0),
+                      transform: Matrix4.translationValues(-15, -5, 0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [

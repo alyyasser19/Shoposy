@@ -27,36 +27,39 @@ class ProductItem extends StatelessWidget {
         onTap: () {
           Navigator.pushNamed(context, ProductDetails.routeName, arguments: product);
         },
-        child: Material(
-          elevation: 5,
-          borderRadius: BorderRadius.circular(40),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(50),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: offWhite,
-              ),
-              child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                SizedBox(
-                    child: Image.network(imageUrl, height: 40, width: double.infinity, fit: BoxFit.contain,),
-                  height: 120,
+        child: Hero(
+          tag: id,
+          child: Material(
+            elevation: 5,
+            borderRadius: BorderRadius.circular(40),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: offWhite,
                 ),
-                Container(
-                  padding: const EdgeInsets.only(left:10,bottom: 10),
-                  margin: const EdgeInsets.only(left: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      SizedBox(child: Text(title,style: Theme.of(context).textTheme.headline6), width: 120,),
-                      Text('$price EGP',style: Theme.of(context).textTheme.subtitle1)
-                    ],
+                child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  SizedBox(
+                      child: Image.network(imageUrl, height: 40, width: double.infinity, fit: BoxFit.contain,),
+                    height: 120,
                   ),
-                )
-              ],
-        ),
+                  Container(
+                    padding: const EdgeInsets.only(left:10,bottom: 10),
+                    margin: const EdgeInsets.only(left: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(child: Text(title,style: Theme.of(context).textTheme.headline6), width: 110,),
+                        Text('$price EGP',style: Theme.of(context).textTheme.subtitle1)
+                      ],
+                    ),
+                  )
+                ],
+          ),
+              ),
             ),
           ),
         ),

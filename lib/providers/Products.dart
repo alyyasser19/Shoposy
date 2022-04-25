@@ -16,7 +16,7 @@ class Products with ChangeNotifier{
    Product(
      id: 'p2',
      title: 'Wireless Mouse M20',
-     description: 'Prepare any meal you want.',
+     description: 'Raise your hand into comfort. Realign into a more natural posture. And relax into focus, all day long with Lift Vertical Ergonomic Mouse — a great fit for small to medium hands, with a left-handed option available too.',
      price: 49.99,
      category: Categories.electronics,
      imageUrl:

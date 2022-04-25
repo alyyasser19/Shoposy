@@ -1,3 +1,4 @@
+import 'package:flutter_shop/screens/login.dart';
 import 'package:flutter_shop/screens/product_details.dart';
 import 'package:flutter_shop/screens/products_overview.dart';
 
@@ -8,5 +9,6 @@ routes(ctx){
     Tabs.routeName: (ctx) => const Tabs(),
     ProductsOverview.routeName: (ctx) => const ProductsOverview(),
     ProductDetails.routeName  : (ctx) => const ProductDetails(),
+    Login.routeName: (ctx) => const Login(),
   };
 }
