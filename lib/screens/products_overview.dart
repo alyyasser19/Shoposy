@@ -11,9 +11,8 @@ class ProductsOverview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final items = Provider
-        .of<Products>(context)
-        .items;
+    final products = Provider
+        .of<Products>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Shopsy'),
@@ -56,8 +55,27 @@ class ProductsOverview extends StatelessWidget {
           ],
         ),
       ),
-      body: const Center(
-        child: ProductGrid(page:'home'),
+      body:  Center(
+        child: FutureBuilder(
+          future: products.fetchProducts(),
+            builder: (context,snapshot) {
+            if(snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            else {
+              return RefreshIndicator(onRefresh: () { return products.fetchProducts(); },
+              child:  Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Stack(children: [
+                  const ProductGrid(page: 'home',),
+                  ListView()
+                ]),
+              ));
+            }
+        },
+        ),
       ),
     );
   }

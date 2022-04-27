@@ -33,7 +33,7 @@ class Product with ChangeNotifier {
 
   String get title => _title;
 
-  Categories get category => _category;
+  String get category => _category.name;
 
   bool get isFavorite => _isFavorite;
 
@@ -41,17 +41,58 @@ class Product with ChangeNotifier {
     _price = newPrice;
   }
 
+  Product.fromJson(Map<String, dynamic> json) {
+    _id = json['id'];
+    _title = json['title'];
+    _description = json['description'];
+    _imageUrl = json['imageUrl'];
+    _category = json['category'];
+    _price = json['price'];
+    _isFavorite = json['isFavorite'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = _id;
+    data['title'] = _title;
+    data['description'] = _description;
+    data['imageUrl'] = _imageUrl;
+    data['category'] = _category;
+    data['price'] = _price;
+    data['isFavorite'] = _isFavorite;
+    return data;
+  }
+
   void setFavorite(){
     _isFavorite = !_isFavorite;
     notifyListeners();
   }
+  void setID(String id){
+    _id = id;
+  }
+
+  static Categories getCategory(String category){
+    switch(category){
+      case 'mouse':
+        return Categories.mouse;
+      case 'headset':
+        return Categories.headset;
+      case 'keyboard':
+        return Categories.keyboard;
+      case 'screen':
+        return Categories.screen;
+        default:
+          return Categories.mouse;
+    }
+  }
 }
 
+
 enum Categories{
-  electronics,
-  furniture,
-  clothes,
-  books,
-  kitchen,
-  others
+  mouse,
+  keyboard,
+  screen,
+  mousePad,
+  headset,
+  other
 }

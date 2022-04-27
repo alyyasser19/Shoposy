@@ -44,7 +44,12 @@ class ProductDetails extends StatelessWidget {
                 child: Column(mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Expanded(child: Image.network(imageUrl, height: MediaQuery.of(context).size.height*0.4, width: double.infinity, fit: BoxFit.contain,)),
+                    Expanded(child: Image.network(
+                      imageUrl, height: MediaQuery.of(context).size.height*0.3, width: double.infinity, fit: BoxFit.contain,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Center(child: Text('Error'));
+                      },
+                    )),
                     Expanded(
                       child: Container(
                         padding: const EdgeInsets.only(left:10,bottom: 10),

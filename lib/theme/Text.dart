@@ -6,7 +6,6 @@ subtitle1: TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.w300,
     color: offBlack,
-    fontStyle: FontStyle.italic
   ),
   subtitle2: TextStyle(
     fontSize: 15,
@@ -26,7 +25,7 @@ subtitle1: TextStyle(
   headline3: TextStyle(
     fontSize: 32,
     color: shopsyRd,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w300,
   ),
   button: TextStyle(
     fontSize: 12,
