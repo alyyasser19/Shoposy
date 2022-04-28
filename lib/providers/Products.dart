@@ -78,5 +78,38 @@ class Products with ChangeNotifier{
     }
     );
   }
+
+  Future<void> deleteProduct(String id) {
+    final url = Uri.parse(
+        'https://shopsy-4eadc-default-rtdb.europe-west1.firebasedatabase.app/Products/$id.json');
+    final existingProductIndex = _items.indexWhere((prod) => prod.id == id);
+    var existingProduct = _items[existingProductIndex];
+    _items.removeAt(existingProductIndex);
+    notifyListeners();
+    return http.delete(url).then((value) {
+      print('Deleted');
+    }).catchError((error) {
+      _items.insert(existingProductIndex, existingProduct);
+      notifyListeners();
+      print('Error');
+    });
   }
+
+  Future<void> modifyProduct(Product product) async{
+    print('modifyProduct');
+    var url = Uri.parse('https://shopsy-4eadc-default-rtdb.europe-west1.firebasedatabase.app/Products/${product.id}.json');
+    http.patch(url, body: json.encode({
+      'title': product.title,
+      'description': product.description,
+      'price': product.price,
+      'category': product.category,
+      'imageUrl': product.imageUrl,
+    })).then((response) {
+      print('Modified');
+      product.notifyListeners();
+    }).catchError((error) {
+      print('Error');
+    });
+  }
+}
 

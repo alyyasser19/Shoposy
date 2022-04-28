@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shop/widgets/admin_item.dart';
 import 'package:flutter_shop/widgets/product_item.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +22,6 @@ class ProductGrid extends StatelessWidget {
     }
 
 
-
     return GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
@@ -35,7 +35,7 @@ class ProductGrid extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return ChangeNotifierProvider.value(
             value: products[index],
-            child: const ProductItem(),
+            child: page=="admin"? const AdminItem() : const ProductItem(),
           );
         });
   }

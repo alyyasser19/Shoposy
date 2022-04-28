@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shop/screens/admin/add_product.dart';
+import 'package:flutter_shop/screens/admin/admin_overview.dart';
 import 'package:flutter_shop/screens/products_overview.dart';
 
 
@@ -26,7 +27,7 @@ class _AdminState extends State<Admin> {
   void initState() {
     super.initState();
     _pages.add({
-      'page': const ProductsOverview(),
+      'page': const AdminOverview(),
       'title': 'Home',
     });
     _pages.add({

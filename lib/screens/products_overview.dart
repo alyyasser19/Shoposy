@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_shop/widgets/product_grid.dart';
 import 'package:provider/provider.dart';
 import '../providers/Products.dart';
-import '../widgets/product_item.dart';
 
 class ProductsOverview extends StatelessWidget {
   static const routeName = '/products-overview';
@@ -68,9 +67,8 @@ class ProductsOverview extends StatelessWidget {
               return RefreshIndicator(onRefresh: () { return products.fetchProducts(); },
               child:  Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Stack(children: [
-                  const ProductGrid(page: 'home',),
-                  ListView()
+                child: Stack(children: const [
+                  ProductGrid(page: 'home',),
                 ]),
               ));
             }

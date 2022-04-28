@@ -8,7 +8,7 @@ import '../../theme/Colors.dart';
 
 
 class AddProduct extends StatefulWidget {
-  static const routeName = '/add-product';
+  static const routeName = '/admin/add-product';
   const AddProduct({Key?key}) : super(key: key);
 
   @override
