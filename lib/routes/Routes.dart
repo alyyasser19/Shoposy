@@ -6,6 +6,7 @@ import 'package:flutter_shop/screens/cart_screen.dart';
 import 'package:flutter_shop/screens/login.dart';
 import 'package:flutter_shop/screens/product_details.dart';
 import 'package:flutter_shop/screens/products_overview.dart';
+import 'package:flutter_shop/screens/sign_up.dart';
 
 import '../screens/tabs.dart';
 
@@ -16,6 +17,7 @@ routes(ctx){
     ProductsOverview.routeName: (ctx) => const ProductsOverview(),
     ProductDetails.routeName  : (ctx) => const ProductDetails(),
     Login.routeName: (ctx) => const Login(),
+    SignUp.routeName: (ctx) => const SignUp(),
     CartScreen.routeName: (ctx) => const CartScreen(),
     //admin Routes
     Admin.routeName: (ctx) => const Admin(),

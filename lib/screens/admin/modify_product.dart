@@ -99,7 +99,7 @@ class _ModifyProductState extends State<ModifyProduct> {
               category: _category,
             ),
           );
-        Navigator.of(context).pushNamed('/admin');
+        Navigator.of(context).popAndPushNamed('/admin');
       }
     }
 

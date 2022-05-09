@@ -6,6 +6,7 @@ import 'package:flutter_shop/screens/tabs.dart';
 import 'package:flutter_shop/theme/theme.dart';
 import 'package:provider/provider.dart';
 
+import 'providers/Auth.dart';
 import 'screens/login.dart';
 
 class App extends StatefulWidget {
@@ -25,6 +26,9 @@ class _AppState extends State<App> {
         ),
         ChangeNotifierProvider(
           create: (_) => Cart(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => Auth(),
         ),
       ],
       child: MaterialApp(

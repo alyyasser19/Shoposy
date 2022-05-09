@@ -184,7 +184,9 @@ class _LoginState extends State<Login> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('Don\'t have an account?', style: Theme.of(context).textTheme.subtitle2?.copyWith(color: offGrey,fontWeight: FontWeight.w400)),
-                          TextButton(onPressed: (){}, child: Text('Sign up', style: Theme.of(context).textTheme.subtitle2?.copyWith(color: shopsyRd,fontWeight: FontWeight.w400)), style: const ButtonStyle(enableFeedback: false),),
+                          TextButton(onPressed: (){
+                            Navigator.pushNamed(context, '/sign_up');
+                          }, child: Text('Sign up', style: Theme.of(context).textTheme.subtitle2?.copyWith(color: shopsyRd,fontWeight: FontWeight.w400)), style: const ButtonStyle(enableFeedback: false),),
                         ],
                       )
                     ],
