@@ -1,8 +1,10 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:provider/provider.dart';
 
-import '../theme/Colors.dart';
+import '../../providers/Auth.dart';
+import '../../theme/Colors.dart';
 
 class SignUp extends StatefulWidget {
   static const String routeName = '/sign_up';
@@ -13,6 +15,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+
   final FocusNode _emailFocus = FocusNode();
   final FocusNode _passwordFocusNode = FocusNode();
   final FocusNode _confirmPasswordFocusNode = FocusNode();
@@ -30,7 +33,6 @@ class _SignUpState extends State<SignUp> {
   final _countryController = TextEditingController();
   var _password = '';
   var _email = '';
-  var _confirmPassword = '';
   var _name = '';
   var _surname = '';
   PhoneNumber _phone = PhoneNumber(dialCode: '+20');
@@ -54,26 +56,38 @@ class _SignUpState extends State<SignUp> {
     _countryController.dispose();
     super.dispose();
   }
-
-  void _register() {
-    if (_form.currentState!.validate()) {
-      _form.currentState!.save();
-      print(_email);
-      print(_password);
-      print(_confirmPassword);
-      print(_name);
-      print(_surname);
-      print(_phone);
-      print(_country);
+  bool validateEmail(String value) {
+    String pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = RegExp(pattern);
+    if (!regex.hasMatch(value)) {
+      return false;
+    } else {
+      return true;
     }
   }
-
   @override
   Widget build(BuildContext context) {
+    final Auth _auth= Provider.of<Auth>(context,listen: false);
     double height = MediaQuery
         .of(context)
         .size
         .height * 0.8;
+
+    Future<void> _register() async {
+      if (_form.currentState!.validate()) {
+        _form.currentState!.save();
+        var response = await _auth.signup(email: _email, password: _password, name: _name, surname: _surname, phone: _phone.toString(), country: _country);
+        if(response['success'] != null){
+          Navigator.of(context).pop();
+        }
+        else
+        {
+          print(response['error']['message']);
+        }
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Create Account'),
@@ -189,6 +203,9 @@ class _SignUpState extends State<SignUp> {
                               if (value!.isEmpty) {
                                 return 'Please enter some text';
                               }
+                              if (!validateEmail(value)) {
+                                return 'Please enter a valid email';
+                              }
                               return null;
                             },
                             onFieldSubmitted: (term) {
@@ -211,6 +228,9 @@ class _SignUpState extends State<SignUp> {
                                 if (value!.isEmpty) {
                                   return 'Please enter some text';
                                 }
+                                if (value.length < 6) {
+                                  return 'Password must be at least 6 characters';
+                                }
                                 return null;
                               },
                               onFieldSubmitted: (term) {
@@ -226,9 +246,6 @@ class _SignUpState extends State<SignUp> {
                               textInputAction: TextInputAction.done,
                               controller: _confirmPasswordController,
                               focusNode: _confirmPasswordFocusNode,
-                              onSaved: (value) {
-                                _confirmPassword = value!;
-                              },
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'Please enter some text';

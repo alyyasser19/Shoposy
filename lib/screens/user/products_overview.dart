@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shop/widgets/product_grid.dart';
 import 'package:provider/provider.dart';
-import '../providers/Products.dart';
+import '../../providers/Products.dart';
 
 class ProductsOverview extends StatelessWidget {
   static const routeName = '/products-overview';
@@ -25,17 +25,6 @@ class ProductsOverview extends StatelessWidget {
             },
           ),
         ],
-        leading: Builder(
-            builder: (context) {
-              return IconButton(
-                icon: const Icon(Icons.menu),
-                iconSize: 30,
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-              );
-            }
-        ),
       ),
       drawer: Drawer(
         child: Column(

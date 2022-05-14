@@ -2,13 +2,13 @@ import 'package:flutter_shop/screens/admin/add_product.dart';
 import 'package:flutter_shop/screens/admin/admin.dart';
 import 'package:flutter_shop/screens/admin/admin_overview.dart';
 import 'package:flutter_shop/screens/admin/modify_product.dart';
-import 'package:flutter_shop/screens/cart_screen.dart';
-import 'package:flutter_shop/screens/login.dart';
-import 'package:flutter_shop/screens/product_details.dart';
-import 'package:flutter_shop/screens/products_overview.dart';
-import 'package:flutter_shop/screens/sign_up.dart';
+import 'package:flutter_shop/screens/user/cart_screen.dart';
+import 'package:flutter_shop/screens/Auth/login.dart';
+import 'package:flutter_shop/screens/user/product_details.dart';
+import 'package:flutter_shop/screens/user/products_overview.dart';
+import 'package:flutter_shop/screens/Auth/sign_up.dart';
 
-import '../screens/tabs.dart';
+import '../screens/user/tabs.dart';
 
 routes(ctx){
   return {

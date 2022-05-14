@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shop/providers/Auth.dart';
 import 'package:flutter_shop/theme/Colors.dart';
+import 'package:provider/provider.dart';
 
 class Login extends StatefulWidget {
   static const String routeName = '/login';
@@ -27,16 +29,29 @@ class _LoginState extends State<Login> {
     super.dispose();
   }
 
-  void _login(){
-    if(_form.currentState!.validate()){
-      _form.currentState!.save();
-      print(_email);
-      print(_password);
-    }}
-
   @override
   Widget build(BuildContext context) {
+    final Auth _auth= Provider.of<Auth>(context,listen: false);
     double height = MediaQuery.of(context).size.height * 0.7;
+
+    Future<void> _login() async {
+      if(_form.currentState!.validate()){
+        _form.currentState!.save();
+        var response = await _auth.login(email: _email, password: _password);
+        if(response['success']){
+          print(response);
+          if(response['admin']){
+            Navigator.of(context).pushReplacementNamed('/admin');
+        }
+        else{
+          Navigator.of(context).pushReplacementNamed('/home');
+        }
+        }
+        else{
+          print(response);
+        }
+      }}
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login'),

@@ -1,15 +1,15 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_shop/screens/cart_screen.dart';
-import 'package:flutter_shop/screens/products_overview.dart';
+import 'package:flutter_shop/screens/user/cart_screen.dart';
+import 'package:flutter_shop/screens/user/products_overview.dart';
 import 'package:flutter_shop/theme/Colors.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/Cart.dart';
+import '../../providers/Cart.dart';
 import 'favorite.dart';
 
 class Tabs extends StatefulWidget {
-  static const routeName = '/';
+  static const routeName = '/home';
   const Tabs({Key?key}) : super(key: key);
 
   @override

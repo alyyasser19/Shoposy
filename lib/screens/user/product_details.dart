@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shop/providers/Cart.dart';
+import 'package:flutter_shop/providers/Product.dart';
+import 'package:flutter_shop/theme/Colors.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/Cart.dart';
-import '../providers/Product.dart';
-import '../theme/Colors.dart';
+
 
 class ProductDetails extends StatelessWidget {
   static const routeName = '/product-details';
@@ -47,7 +48,7 @@ class ProductDetails extends StatelessWidget {
                     Expanded(child: Image.network(
                       imageUrl, height: MediaQuery.of(context).size.height*0.3, width: double.infinity, fit: BoxFit.contain,
                       errorBuilder: (context, error, stackTrace) {
-                        return Center(child: Text('Error'));
+                        return const Center(child: Text('Error'));
                       },
                     )),
                     Expanded(
